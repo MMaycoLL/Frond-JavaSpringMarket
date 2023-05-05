@@ -1,0 +1,72 @@
+<form #f="ngForm" (ngSubmit)="crearProducto()">
+  <div>
+    <label>Nombre del producto: </label>
+    <input
+      type="text"
+      name="nombreProducto"
+      [(ngModel)]="producto.nombreProducto"
+      required
+    />
+  </div>
+  <div>
+    <label>Descripcion: </label>
+    <input
+      type="text"
+      name="descripcionProducto"
+      [(ngModel)]="producto.descripcionProducto"
+      required
+    />
+  </div>
+
+  <div>
+    <label>Stock: </label>
+    <input
+      type="number"
+      name="unidadesDisponibles"
+      [(ngModel)]="producto.unidadesDisponibles"
+      #unidadesInput="ngModel"
+      required
+    />
+    <div *ngIf="unidadesInput.touched && producto.unidadesDisponibles <= 0">
+      Las unidades disponibles deben ser mayores a 0
+    </div>
+  </div>
+
+  <div>
+    <label>Precio: </label>
+    <input
+      type="number"
+      name="precioActual"
+      [(ngModel)]="producto.precioActual"
+      #precioInput="ngModel"
+      required
+    />
+    <div
+      *ngIf="precioInput.invalid && (precioInput.dirty || precioInput.touched)"
+    >
+      Por favor ingrese un precio válido
+    </div>
+  </div>
+
+  <div>
+    <label>Imagenes: </label>
+    <input
+      type="file"
+      name="imagenes"
+      (change)="onFileChange($event)"
+      multiple
+    />
+  </div>
+
+  <div>
+    <label>Categoría: </label>
+    <select name="categoria" [(ngModel)]="producto.categorias" required>
+      <option value="" selected>Seleccione una categoría</option>
+      <option [value]="i + 1" *ngFor="let item of categorias; index as i">
+        {{ item }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!f.valid">Crear producto</button>
+</form>

@@ -1,0 +1,19 @@
+<form #f="ngForm" (ngSubmit)="iniciarSesion()">
+  <div>
+    <label>Email: </label>
+    <input type="email" name="email" [(ngModel)]="sesion.email" required />
+  </div>
+  <div>
+    <label
+      >Contraseña:
+      <colgroup></colgroup>
+    </label>
+    <input
+      type="password"
+      name="contrasenia"
+      [(ngModel)]="sesion.contrasenia"
+      required=""
+    />
+  </div>
+  <button type="submit" [disabled]="f.invalid">Iniciar Sesión</button>
+</form>
