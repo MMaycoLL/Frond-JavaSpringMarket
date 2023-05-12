@@ -1,72 +1,233 @@
-<form #f="ngForm" (ngSubmit)="crearProducto()">
-  <div>
-    <label>Nombre del producto: </label>
-    <input
-      type="text"
-      name="nombreProducto"
-      [(ngModel)]="producto.nombreProducto"
-      required
-    />
-  </div>
-  <div>
-    <label>Descripcion: </label>
-    <input
-      type="text"
-      name="descripcionProducto"
-      [(ngModel)]="producto.descripcionProducto"
-      required
-    />
-  </div>
+<div class="container custom-container">
+  <div class="card p-5 bg-light">
+    <form #f="ngForm" (ngSubmit)="crearProducto()">
+      <fieldset class="mb-4">
+        <legend class="text-center text-primary mb-4">
+          <div class="d-flex flex-column align-items-center">
+            <i class="fas fa-plus-circle fa-3x background-color-"></i>
+            ¡Crea un nuevo producto!
+          </div>
+        </legend>
 
-  <div>
-    <label>Stock: </label>
-    <input
-      type="number"
-      name="unidadesDisponibles"
-      [(ngModel)]="producto.unidadesDisponibles"
-      #unidadesInput="ngModel"
-      required
-    />
-    <div *ngIf="unidadesInput.touched && producto.unidadesDisponibles <= 0">
-      Las unidades disponibles deben ser mayores a 0
-    </div>
-  </div>
+        <div class="mb-4 row">
+          <div class="col-form-control">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-tag fa-lg text-primary bg-light"></i>
+                </span>
+              </div>
+              <input
+                #nombreProducto="ngModel"
+                class="form-control border-1 input-group-text bg-custom"
+                [ngClass]="{
+                  'is-invalid':
+                    nombreProducto.invalid &&
+                    (nombreProducto.dirty || nombreProducto.touched)
+                }"
+                type="text"
+                id="nombreProducto"
+                name="nombreProducto"
+                [(ngModel)]="producto.nombreProducto"
+                required
+                placeholder="Ingresa el nombre del producto"
+                maxlength="50"
+              />
+              <div
+                *ngIf="
+                  nombreProducto.invalid &&
+                  (nombreProducto.dirty || nombreProducto.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="nombreProducto.touched && nombreProducto.errors">
+                  El nombre es obligatorio
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div>
-    <label>Precio: </label>
-    <input
-      type="number"
-      name="precioActual"
-      [(ngModel)]="producto.precioActual"
-      #precioInput="ngModel"
-      required
-    />
-    <div
-      *ngIf="precioInput.invalid && (precioInput.dirty || precioInput.touched)"
-    >
-      Por favor ingrese un precio válido
-    </div>
-  </div>
+        <div class="mb-4 row">
+          <div class="col-form-control">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-file-alt fa-lg text-primary bg-light"></i>
+                </span>
+              </div>
+              <textarea
+                #descripcionProducto="ngModel"
+                class="form-control border-1 input-group-text bg-custom"
+                [ngClass]="{
+                  'is-invalid':
+                    descripcionProducto.invalid &&
+                    (descripcionProducto.dirty || descripcionProducto.touched)
+                }"
+                type="text"
+                id="descripcionProducto"
+                name="descripcionProducto"
+                [(ngModel)]="producto.descripcionProducto"
+                required
+                placeholder="Ingresa la descripción del producto"
+                rows="5"
+                maxlength="500"
+              ></textarea>
+              <div
+                *ngIf="
+                  descripcionProducto.invalid &&
+                  (descripcionProducto.dirty || descripcionProducto.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div
+                  *ngIf="
+                    descripcionProducto.touched && descripcionProducto.errors
+                  "
+                >
+                  El producto tiene que tener una descripcion
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div>
-    <label>Imagenes: </label>
-    <input
-      type="file"
-      name="imagenes"
-      (change)="onFileChange($event)"
-      multiple
-    />
-  </div>
+        <div class="mb-4 row">
+          <div class="col-form-control">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-box fa-lg text-primary bg-light"></i>
+                </span>
+              </div>
+              <input
+                #unidadesDisponibles="ngModel"
+                class="form-control border-1 input-group-text bg-custom"
+                [ngClass]="{
+                  'is-invalid':
+                    unidadesDisponibles.invalid &&
+                    (unidadesDisponibles.dirty || unidadesDisponibles.touched)
+                }"
+                type="number"
+                id="unidadesDisponibles"
+                name="unidadesDisponibles"
+                [(ngModel)]="producto.unidadesDisponibles"
+                required
+                placeholder="Ingresa las unidades disponibles"
+              />
+              <div
+                *ngIf="
+                  unidadesDisponibles.invalid &&
+                  (unidadesDisponibles.dirty || unidadesDisponibles.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="unidadesDisponibles.errors?.['required']">
+                  Las unidades disponibles son obligatorias
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div>
-    <label>Categoría: </label>
-    <select name="categoria" [(ngModel)]="producto.categorias" required>
-      <option value="" selected>Seleccione una categoría</option>
-      <option [value]="i + 1" *ngFor="let item of categorias; index as i">
-        {{ item }}
-      </option>
-    </select>
-  </div>
+        <div class="mb-4 row">
+          <div class="col-form-control">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-dollar-sign fa-lg text-primary bg-light"></i>
+                </span>
+              </div>
+              <input
+                #precioActual="ngModel"
+                class="form-control border-1 input-group-text bg-custom"
+                [ngClass]="{
+                  'is-invalid':
+                    precioActual.invalid &&
+                    (precioActual.dirty || precioActual.touched)
+                }"
+                type="number"
+                id="precioActual"
+                name="precioActual"
+                [(ngModel)]="producto.precioActual"
+                required
+                placeholder="Ingresa el precio del producto"
+              />
+              <div
+                *ngIf="
+                  precioActual.invalid &&
+                  (precioActual.dirty || precioActual.touched)
+                "
+                class="invalid-feedback"
+              >
+                <div *ngIf="precioActual.errors?.['required']">
+                  Debe tener un precio
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <button type="submit" [disabled]="!f.valid">Crear producto</button>
-</form>
+        <div class="mb-4 row">
+          <div class="col">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-image fa-lg text-primary bg-light"></i>
+                </span>
+              </div>
+              <div class="form-control border-1 input-group-text file-input-wrapper bg-custom d-flex align-items-center">
+                <input
+                  type="file"
+                  name="imagenes"
+                  id="imagenes"
+                  (change)="onFileChange($event)"
+                  multiple
+                />
+                <label for="imagenes" class="file-input-label flex-grow-1">
+                  <span style="color: #808080; max-width: 100%;" class="text-center">
+
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="mb-4 row">
+          <div class="col">
+            <div class="input-group">
+              <div class="input-group-text">
+                <span class="input-group-text bg-light border-0 px-0">
+                  <i class="fas fa-tags fa-lg text-primary bg-light "></i>
+                </span>
+              </div>
+              <div class="form-control border-1 input-group-text select-wrapper bg-custom ">
+                <select name="categoria" [(ngModel)]="producto.categorias" required class="form-select">
+                  <option value="" disabled selected style="color: #adcbef ">
+                    Seleccione una categoría
+                  </option>
+                  <option [value]="i + 1" *ngFor="let item of categorias; index as i">
+                    {{ item }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+<div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+<i class="fa-solid fas fa-save fa-lg me-1"></i>
+          Crear producto
+        </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

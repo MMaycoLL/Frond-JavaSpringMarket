@@ -2,8 +2,8 @@ export class ProductoDTO {
 
   nombreProducto: string = "";
   descripcionProducto: string = "";
-  unidadesDisponibles: number = 0;
-  precioActual: number = 0;
+  unidadesDisponibles: number | null = null;
+  precioActual: number | null = null;
   idPersona: number = 0;
   imagenes: string[] = [];
   categorias: string[] = [];

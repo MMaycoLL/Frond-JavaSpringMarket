@@ -14,7 +14,7 @@ export class RegistroComponent {
   }
 
   public registrar() {
-    console
+    console.log(this.registrar)
   }
 
   public sonIguales(): boolean {

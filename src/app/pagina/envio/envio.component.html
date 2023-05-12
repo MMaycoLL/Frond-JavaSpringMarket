@@ -1,0 +1,44 @@
+<form #f="ngForm" (ngSubmit)="registrar()">
+  <div>
+    <label>Nombre Destinatario</label>
+    <input
+      type="text"
+      name="nombreDestinatario"
+      [(ngModel)]="envio.nombreDestinatario"
+    />
+  </div>
+
+  <div>
+    <Label>Direccion Destinatario</Label>
+    <input
+      type="text"
+      name="direccionDestinatario"
+      [(ngModel)]="envio.direccionDestinatario"
+    />
+  </div>
+
+  <div>
+    <Label>Telefono Destinatario</Label>
+    <input
+      type="text"
+      name="telefonoDestinatario"
+      [(ngModel)]="envio.telefonoDestinatario"
+    />
+  </div>
+
+  <div>
+    <Label>Ciudad Envio</Label>
+    <select name="ciudadEnvio" [(ngModel)]="envio.ciudadEnvio" required>
+      <option value="" selected>Seleccione una ciudad</option>
+      <option [value]="i + 1" *ngFor="let item of ciudades; index as i">
+        {{ item }}
+      </option>
+    </select>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+      Guardar
+    </button>
+  </div>
+</form>

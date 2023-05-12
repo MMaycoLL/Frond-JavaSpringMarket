@@ -1,0 +1,4 @@
+.custom-container {
+  max-width: 750px; /* Ajusta el valor según el ancho deseado */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
