@@ -6,9 +6,9 @@
         <img src="{{ item.imagenes[0] }}" />
       </div>
       <div class="card-body">
-        <p class="card-text">{{ item.nombre }}</p>
-        <p class="card-text">{{ item.descripcion }}</p>
-        <p class="card-text">$ {{ item.precio }}</p>
+        <p class="card-text">{{ item.nombreProducto }}</p>
+        <p class="card-text">{{ item.descripcionProducto }}</p>
+        <p class="card-text">$ {{ item.precioActual }}</p>
         <span
           class="badge text-bg-primary me-2"
           *ngFor="let cat of item.categorias"
@@ -19,7 +19,7 @@
           <div class="btn-group">
             <a
               class="btn btn-sm btn-outline-primary"
-              routerLink="/detalle-producto/{{ item.codigo }}"
+              routerLink="/detalle-producto/{{ item.idProducto }}"
               role="button"
               >Ver detalle</a
             >

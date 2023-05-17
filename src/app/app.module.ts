@@ -17,6 +17,10 @@ import { ComentarioComponent } from './pagina/comentario/comentario.component';
 import { FavoritoComponent } from './pagina/favorito/favorito.component';
 import { CompraComponent } from './pagina/compra/compra.component';
 import { DetalleCompraComponent } from './pagina/detalle-compra/detalle-compra.component';
+import { AlertaComponent } from './pagina/alerta/alerta.component';
+import { DetalleProductoComponent } from './pagina/detalle-producto/detalle-producto.component';
+import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
+import { CarritoComponent } from './pagina/carrito/carrito.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,14 @@ import { DetalleCompraComponent } from './pagina/detalle-compra/detalle-compra.c
     FavoritoComponent,
     CompraComponent,
     DetalleCompraComponent,
+    AlertaComponent,
+    DetalleProductoComponent,
+    GestionProductosComponent,
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule

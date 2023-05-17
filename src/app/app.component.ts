@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frond-JavaSpringMarket';
+  title = 'Unimarket';
 
   constructor(private router: Router) { }
 

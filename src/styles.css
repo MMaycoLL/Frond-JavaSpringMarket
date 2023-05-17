@@ -1,9 +1,4 @@
-.seccion-pagina {
-  background-color: rgba(241, 239, 239, 0.1);
-  border: solid rgba(246, 243, 243, 0.15);
-  border-width: 1px 0;
-  box-shadow: inset 0 0.5em 1.5em rgba(250, 247, 247, 0.1), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
-  }
+
 
   .image-item{
     max-height: 225px;
@@ -12,3 +7,25 @@
     .image-item img{
     width: 100%;
     }
+    .carousel-item {
+      height: 65vh;
+      min-height: 350px;
+      background: no-repeat center center scroll;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+     /* Estilos personalizados */
+
+
+     .search-input {
+      margin-right: 10px;
+    }
+
+    .search-form {
+      margin-right: 120px;
+    }
+
+

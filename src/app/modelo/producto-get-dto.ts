@@ -1,19 +1,21 @@
 export class ProductoGetDTO {
-  codigo: number = 0;
-  nombre: string = "";
-  descripcion: string = "";
-  precio: number = 0;
+  idProducto: number = 0;
+  nombreProducto: string = "";
+  descripcionProducto: string = "";
+  precioActual: number = 0;
   unidadesDisponibles: number = 0;
   imagenes: string[] = [];
   categorias: string[] = [];
+  idPersona: number;
 
-  constructor(codigo: number, nombre: string, descripcion: string, precio: number, unidadesDisponibles: number, imagenes: string[], categorias: string[]) {
-    this.codigo = codigo;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.precio = precio;
+  constructor(idProducto: number, nombreProducto: string, descripcionProducto: string, precioActual: number, unidadesDisponibles: number, imagenes: string[], categorias: string[], idPersona: number) {
+    this.idProducto = idProducto;
+    this.nombreProducto = nombreProducto;
+    this.descripcionProducto = descripcionProducto;
+    this.precioActual = precioActual;
     this.unidadesDisponibles = unidadesDisponibles;
     this.imagenes = imagenes;
     this.categorias = categorias;
+    this.idPersona = idPersona;
   }
 }

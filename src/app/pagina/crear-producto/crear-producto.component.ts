@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProductoDTO } from 'src/app/modelo/producto-dto';
+import { CategoriaService } from 'src/app/servicios/categoria.service';
+import { ImagenService } from 'src/app/servicios/imagen.service';
+import { ProductoService } from 'src/app/servicios/producto.service';
 
 @Component({
   selector: 'app-crear-producto',
@@ -9,12 +13,24 @@ import { ProductoDTO } from 'src/app/modelo/producto-dto';
 export class CrearProductoComponent {
   producto: ProductoDTO;
   categorias: string[];
-  constructor() {
+  archivos!: FileList;
+  esEdicion: boolean = false;
+  codigoProducto: number = 0;
+
+
+  constructor(private imagenService: ImagenService, private categoriaService: CategoriaService, private route: ActivatedRoute, private productoService: ProductoService) {
+
     this.categorias = [];
     this.producto = new ProductoDTO();
+    this.route.params.subscribe(params => {
+      this.codigoProducto = params["codigo"];
+      let objetoProducto = this.productoService.obtener(this.codigoProducto);
+      if (objetoProducto != null) {
+        this.producto = objetoProducto;
+        this.esEdicion = true;
+      }
+    });
   }
-
-
 
   ngOnInit(): void {
     this.categorias.push('Tecnología');
@@ -26,12 +42,11 @@ export class CrearProductoComponent {
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      const files = event.target.files;
-      console.log(files);
+      this.archivos = event.target.files;
+      console.log(this.archivos);
     }
   }
 
-  archivos!: FileList;
   public crearProducto() {
     if (this.archivos != null && this.archivos.length > 0) {
       console.log(this.producto);
@@ -39,4 +54,7 @@ export class CrearProductoComponent {
       console.log('Debe seleccionar al menos una imagen');
     }
   }
+
+
 }
+

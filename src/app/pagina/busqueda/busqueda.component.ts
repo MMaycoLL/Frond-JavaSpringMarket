@@ -23,7 +23,7 @@ export class BusquedaComponent {
     this.route.params.subscribe(params => {
       this.textoBusqueda = params["texto"];
       this.filtro = this.productos.filter(p =>
-        p.nombre.toLowerCase().includes(this.textoBusqueda.toLowerCase()));
+        p.nombreProducto.toLowerCase().includes(this.textoBusqueda.toLowerCase()));
     });
   }
 }

@@ -1,4 +1,23 @@
-.custom-container {
-  max-width: 750px; /* Ajusta el valor según el ancho deseado */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
+.custom-carousel {
+  width: 100%; /* Ajusta el ancho deseado */
+  margin: 0; /* Elimina el margen */
+  padding: 0; /* Elimina el relleno */
+  border: none; /* Elimina el borde */
+}
+
+.custom-carousel .carousel-inner {
+  width: 100%; /* Ajusta el ancho del carrusel interno */
+}
+
+.custom-carousel .carousel-item {
+  width: 100%; /* Ajusta el ancho de los elementos del carrusel */
+}
+
+.custom-carousel .carousel-item.active {
+  display: flex;
+}
+
+.custom-carousel .carousel-item-next,
+.custom-carousel .carousel-item-prev {
+  display: flex;
 }

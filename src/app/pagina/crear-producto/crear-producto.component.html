@@ -26,6 +26,7 @@
                     (nombreProducto.dirty || nombreProducto.touched)
                 }"
                 type="text"
+                f
                 id="nombreProducto"
                 name="nombreProducto"
                 [(ngModel)]="producto.nombreProducto"
@@ -176,7 +177,9 @@
                   <i class="fas fa-image fa-lg text-primary bg-light"></i>
                 </span>
               </div>
-              <div class="form-control border-1 input-group-text file-input-wrapper bg-custom d-flex align-items-center">
+              <div
+                class="form-control border-1 input-group-text file-input-wrapper bg-custom d-flex align-items-center"
+              >
                 <input
                   type="file"
                   name="imagenes"
@@ -185,8 +188,10 @@
                   multiple
                 />
                 <label for="imagenes" class="file-input-label flex-grow-1">
-                  <span style="color: #808080; max-width: 100%;" class="text-center">
-
+                  <span
+                    style="color: #808080; max-width: 100%"
+                    class="text-center"
+                  >
                   </span>
                 </label>
               </div>
@@ -194,24 +199,31 @@
           </div>
         </div>
 
-
-
-
-
         <div class="mb-4 row">
           <div class="col">
-            <div class="input-group">
+            <div class="checkbox-list">
               <div class="input-group-text">
                 <span class="input-group-text bg-light border-0 px-0">
-                  <i class="fas fa-tags fa-lg text-primary bg-light "></i>
+                  <i class="fas fa-tags fa-lg text-primary bg-light"></i>
                 </span>
               </div>
-              <div class="form-control border-1 input-group-text select-wrapper bg-custom ">
-                <select name="categoria" [(ngModel)]="producto.categorias" required class="form-select">
-                  <option value="" disabled selected style="color: #adcbef ">
+
+              <div
+                class="form-control border-1 input-group-text select-wrapper bg-custom"
+              >
+                <select
+                  name="categoria"
+                  [(ngModel)]="producto.categorias"
+                  required
+                  class="form-select"
+                >
+                  <option value="" disabled selected style="color: #adcbef">
                     Seleccione una categoría
                   </option>
-                  <option [value]="i + 1" *ngFor="let item of categorias; index as i">
+                  <option
+                    [value]="i + 1"
+                    *ngFor="let item of categorias; index as i"
+                  >
                     {{ item }}
                   </option>
                 </select>
@@ -220,12 +232,14 @@
           </div>
         </div>
 
-
-<div class="text-center">
-        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
-<i class="fa-solid fas fa-save fa-lg me-1"></i>
-          Crear producto
-        </button>
+        <div class="text-center">
+          <button type="submit" [disabled]="f.invalid" class="btn btn-primary">
+            <i
+              class="fa-solid
+    {{ esEdicion ? 'fa-pencil' : 'fa-circle-plus' }} me-1"
+            ></i
+            >{{ esEdicion ? "Editar" : "Crear" }} Producto
+          </button>
         </div>
       </fieldset>
     </form>
