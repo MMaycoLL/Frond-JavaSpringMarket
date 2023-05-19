@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoDTO } from 'src/app/modelo/producto-dto';
 import { CategoriaService } from 'src/app/servicios/categoria.service';

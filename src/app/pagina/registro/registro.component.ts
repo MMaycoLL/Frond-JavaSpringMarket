@@ -15,20 +15,21 @@ export class RegistroComponent {
 
     this.usuario = new UsuarioDTO();
   }
-  alerta!:Alerta;
-  
+  alerta!: Alerta;
+
   public registrar() {
 
     const objeto = this;
+    console.log(this.usuario);
 
     this.authService.crear(this.usuario).subscribe({
       next: data => {
         objeto.alerta = new Alerta(data.respuesta, "success");
-        },
-        error: error => {
+      },
+      error: error => {
         objeto.alerta = new Alerta(error.error.respuesta, "danger");
-        }
-        });
+      }
+    });
 
   }
 
