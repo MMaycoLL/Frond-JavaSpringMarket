@@ -3,27 +3,31 @@
     <div class="d-flex flex-wrap align-items-center justify-content-between">
       <a
         routerLink=""
-        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
+        class="d-flex align-items-center  text-white text-decoration-none"
       >
-        <i class="fa-solid fas fa-shopping-bag fs-3"></i>
-        <span class="fs-4 ms-3 me-3">{{ title }}</span>
+        <i class="fa-solid fas fa-shopping-bag fs-1 me-0"></i>
+        <span class="fs-2 ms-2 me-0">{{ title }}</span>
       </a>
-      <ul class="nav col-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-lg-auto justify-content-center mb-md-0">
         <li class="nav-item">
-          <a routerLink="" class="nav-link text-secondary">Inicio</a>
+          <a routerLink="/" class="nav-link text-secondary">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a routerLink="/gestion-productos" class="nav-link text-white"
+        <li class="nav-item" *ngIf="isLogged && !isAdmin">
+          <a routerLink="gestion-productos" class="nav-link text-white"
             >Mis productos</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLogged && !isAdmin">
           <a routerLink="" class="nav-link text-white">Mis compras</a>
         </li>
-        <li class="nav-item">
-          <a routerLink="carrito" class="nav-link text-white">Carrito</a>
+        <li class="nav-item" *ngIf="isLogged && !isAdmin">
+          <a routerLink="/carrito" class="nav-link text-white">Carrito</a>
         </li>
-        
+        <li class="nav-item" *ngIf="isLogged && isAdmin">
+          <a routerLink="/revisar-productos" class="nav-link text-white"
+            >Admin</a
+          >
+        </li>
       </ul>
 
       <form
@@ -40,18 +44,29 @@
         />
       </form>
 
-      <div class="text-end">
-        <button
-          type="button"
-          class="btn btn-outline-light me-2"
-          routerLink="/login"
-        >
-          Login
-        </button>
-        <button type="button" class="btn btn-warning" routerLink="/registro">
-          Sign-up
-        </button>
-      </div>
+      <div *ngIf="!isLogged; then nologged; else logged"></div>
+      <ng-template #nologged>
+        <div class="text-end">
+          <button
+            type="button"
+            routerLink="/login"
+            class="btn btn-outline-light me-2"
+          >
+            Login
+          </button>
+          <button type="button" routerLink="/registro" class="btn btn-primary">
+            Sign-up
+          </button>
+        </div>
+      </ng-template>
+      <ng-template #logged>
+        <div class="text-end">
+          <label class="me-3">Hola {{ email }}</label>
+          <button type="button" (click)="logout()" class="btn btn-warning">
+            Logout
+          </button>
+        </div>
+      </ng-template>
     </div>
   </div>
 

@@ -1,4 +1,76 @@
-.custom-container {
+/* Estilos para los botones */
+.btn-primary {
+  background-color: #6ec6ff;
+  border-color: #6ec6ff;
+  color: #fff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
 
-  margin-top: 40px; /* Añade un margen de 20px en la parte superior */
+.btn-outline {
+  background-color: transparent;
+  border-color: #6ec6ff;
+  color: #6ec6ff;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-crear {
+  background-color: #61c864;
+  border-color: #61c864;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-eliminar {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #1b8dda;
+  border-color: #ffc107;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-outline:hover,
+.btn-crear:hover,
+.btn-eliminar:hover,
+.btn-editar:hover {
+  background-color: #fff;
+  color: #6ec6ff;
+}
+
+/* Estilos para la tabla */
+.table-header {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+.custom-container {
+  margin-top: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  font-size: 14px;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #a5d4f4;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.btn-editar {
+  padding: 5px 10px;
 }

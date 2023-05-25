@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,8 @@ import { AlertaComponent } from './pagina/alerta/alerta.component';
 import { DetalleProductoComponent } from './pagina/detalle-producto/detalle-producto.component';
 import { GestionProductosComponent } from './pagina/gestion-productos/gestion-productos.component';
 import { CarritoComponent } from './pagina/carrito/carrito.component';
+import { RevisarProductosComponent } from './pagina/revisar-productos/revisar-productos.component';
+import { UsuarioInterceptor } from './interceptor/usuario.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { CarritoComponent } from './pagina/carrito/carrito.component';
     DetalleProductoComponent,
     GestionProductosComponent,
     CarritoComponent,
+    RevisarProductosComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { CarritoComponent } from './pagina/carrito/carrito.component';
     NgSelectModule
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: UsuarioInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

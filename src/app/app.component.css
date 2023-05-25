@@ -11,9 +11,6 @@ header a:hover {
   text-decoration: underline;
 }
 
-header .nav-item {
-  margin-right: 15px;
-}
 
 header .nav-link {
   color: #fff;

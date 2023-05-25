@@ -1,0 +1,100 @@
+<div class="sidebar">
+  <hr class="sidebar-divider" />
+  <div class="admin-section">
+    <i class="fas fa-user fa-2x"></i>
+    <h4 class="sidebar-title">Administrador</h4>
+  </div>
+  <hr class="sidebar-divider" />
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link" (click)="listarSinRevisar()">
+        <span class="icon-wrapper">
+          <i class="fas fa-exclamation-circle"></i>
+        </span>
+        Sin revisar
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="listarAutorizados()">
+        <span class="icon-wrapper">
+          <i class="fas fa-check-circle"></i>
+        </span>
+        Autorizados
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="listarDenegados()">
+        <span class="icon-wrapper">
+          <i class="fas fa-times-circle"></i>
+        </span>
+        Denegados
+      </a>
+    </li>
+  </ul>
+  <hr class="sidebar-divider" />
+</div>
+
+<div class="container custom-container">
+  <div class="card ">
+
+<div class="container custom-container">
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+
+        <th class="table-header">ID</th>
+        <th class="table-header">Nombre</th>
+        <th class="table-header">Descripción</th>
+        <th class="table-header">Precio</th>
+        <th class="table-header">Unidades</th>
+        <th class="table-header">Imágenes</th>
+        <th class="table-header">Categorías</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <tr *ngFor="let item of productos">
+
+        <td>
+          <p>{{ item.idProducto }}</p>
+        </td>
+        <td>
+          <p>{{ item.nombreProducto }}</p>
+        </td>
+        <td>
+          <p>{{ item.descripcionProducto }}</p>
+        </td>
+        <td>
+          <p>{{ item.precioActual }}</p>
+        </td>
+        <td>
+          <p>{{ item.unidadesDisponibles }}</p>
+        </td>
+        <td>
+          <img [src]="item.imagenes[0]"
+          width="120"
+        />
+      </td>
+      <td>
+        <p>{{ item.categorias }}</p>
+      </td>
+      <td>
+        <button>
+        <li class="nav-item">
+          <a class="nav-link1" (click)="aprobarProducto()">
+            <span class="icon-wrapper">
+              <i class="fas fa-check-circle"></i>
+            </span>
+            AUTORIZAR
+          </a>
+        </li>
+      </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+    </div>
+  </div>
+

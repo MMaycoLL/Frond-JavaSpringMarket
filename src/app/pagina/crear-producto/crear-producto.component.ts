@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProductoDTO } from 'src/app/modelo/producto-dto';
 import { CategoriaService } from 'src/app/servicios/categoria.service';
@@ -18,9 +17,12 @@ export class CrearProductoComponent {
   esEdicion: boolean = false;
   codigoProducto: number = 0;
 
-
-  constructor(private imagenService: ImagenService, private categoriaService: CategoriaService, private route: ActivatedRoute, private productoService: ProductoService) {
-
+  constructor(
+    private imagenService: ImagenService,
+    private categoriaService: CategoriaService,
+    private route: ActivatedRoute,
+    private productoService: ProductoService
+  ) {
     this.categorias = [];
     this.producto = new ProductoDTO();
     this.route.params.subscribe(params => {
@@ -39,6 +41,7 @@ export class CrearProductoComponent {
     this.categorias.push('Deportes');
     this.categorias.push('Moda');
     this.categorias.push('Mascotas');
+   
   }
 
   onFileChange(event: any) {
@@ -56,6 +59,35 @@ export class CrearProductoComponent {
     }
   }
 
+  public subirImagenes() {
+    if (this.archivos != null && this.archivos.length > 0) {
+      const objeto = this.producto;
+      const formData = new FormData();
+      formData.append('file', this.archivos[0]);
+      this.imagenService.subir(formData).subscribe({
+        next: data => {
+          objeto.imagenes.push(data.respuesta.url);
+        },
+        error: error => {
+          console.log(error.error);
+        }
+      });
+    } else {
+      console.log('Debe seleccionar al menos una imagen y subirla');
+    }
+  }
+
+  public toggleCategoria(categoria: string) {
+    if (this.producto.categorias.includes(categoria)) {
+      // Si la categoría ya está seleccionada, la eliminamos del arreglo
+      this.producto.categorias = this.producto.categorias.filter(cat => cat !== categoria);
+    } else {
+      // Si la categoría no está seleccionada, la agregamos al arreglo
+      this.producto.categorias.push(categoria);
+    }
+  }
+
 
 }
+
 

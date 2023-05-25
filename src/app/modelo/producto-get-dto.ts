@@ -1,9 +1,9 @@
 export class ProductoGetDTO {
-  idProducto: number = 0;
-  nombreProducto: string = "";
-  descripcionProducto: string = "";
-  precioActual: number = 0;
-  unidadesDisponibles: number = 0;
+  idProducto: number;
+  nombreProducto: string;
+  descripcionProducto: string;
+  precioActual: number;
+  unidadesDisponibles: number;
   imagenes: string[] = [];
   categorias: string[] = [];
   idPersona: number;

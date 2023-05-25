@@ -10,7 +10,7 @@ export class ImagenService {
   constructor(private http: HttpClient) { }
 
   public subir(imagen: FormData): Observable<MensajeDTO> {
-    return this.http.post<MensajeDTO>(`${this.imgURL}/upload`, imagen);
+    return this.http.post<MensajeDTO>(`${this.imgURL}/subir`, imagen);
   }
   public eliminar(idImagen: string): Observable<MensajeDTO> {
     return this.http.delete<MensajeDTO>(`${this.imgURL}/${idImagen}`);

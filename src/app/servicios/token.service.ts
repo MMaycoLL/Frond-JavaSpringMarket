@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Buffer } from "buffer";
+import { SesionService } from './sesion.service';
 
 const TOKEN_KEY = "AuthToken";
 
@@ -27,12 +28,32 @@ export class TokenService {
 
   public login(token: string) {
     this.setToken(token);
+    this.sesionService.updateSession(true);
     this.router.navigate(["/"]);
   }
 
   public logout() {
     window.sessionStorage.clear();
+    this.sesionService.updateSession(false);
     this.router.navigate(["/login"]);
+  }
+
+  public getEmail(): string {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.sub;
+    }
+    return "";
+  }
+
+  public getRole(): string[] {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.roles;
+    }
+    return [];
   }
 
   private decodePayload(token: string): any {
@@ -41,5 +62,5 @@ export class TokenService {
     const values = JSON.parse(payloadDecoded);
     return values;
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sesionService: SesionService) { }
 }

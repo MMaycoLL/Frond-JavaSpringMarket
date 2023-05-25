@@ -1,8 +1,8 @@
 import { ProductoDTO } from "./producto-dto";
 
 export class DetalleCompraDTO {
-  producto: ProductoDTO = new ProductoDTO();
-  unidades: number = 0;
+  producto: ProductoDTO;
+  unidades: number;
 
   constructor(producto: ProductoDTO, unidades: number) {
     this.producto = producto;

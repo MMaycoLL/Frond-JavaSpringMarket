@@ -1,0 +1,109 @@
+.custom-container {
+  max-width: 950px; /* Ajusta el valor según el ancho deseado */
+
+}
+.sidebar {
+  width: 80%;
+  max-width: 280px;
+  padding: 15px;
+}
+
+.admin-section {
+  display: flex;
+
+  margin-bottom: 20px;
+  color: white;
+}
+
+.admin-section i {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.sidebar-title {
+  margin: 0;
+  color: white;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-link1 {
+  display: flex;
+  align-items: center;
+  color: rgb(11, 6, 6);
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-link i {
+  margin-right: 10px;
+}
+
+
+.nav-link:hover {
+  background-color: #adcbef;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    max-width: 100%;
+  }
+}
+
+
+
+/* Estilos para la tabla */
+.table-header {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: bold;
+}
+
+.custom-container {
+  margin-top: 60px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px #adcbef;
+}
+
+.table {
+  font-size: 14px;
+}
+
+
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #e0e0e0;
+}
+
+.table tbody tr:hover {
+  background-color: #a5d4f4;
+}
+
+.table body tr td {
+ background-color: #e0e0e0;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+
+.btn-editar {
+  padding: 5px 10px;
+}
