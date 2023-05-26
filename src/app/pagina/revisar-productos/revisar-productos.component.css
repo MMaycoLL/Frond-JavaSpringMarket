@@ -1,16 +1,20 @@
 .custom-container {
-  max-width: 950px; /* Ajusta el valor según el ancho deseado */
-
+  margin-top: 20px;
+  margin-right: 50px;
 }
+
+.custom-col {
+  margin-right: 2px;
+}
+
 .sidebar {
-  width: 80%;
-  max-width: 280px;
+  width: 60%;
+  max-width: 200px;
   padding: 15px;
 }
 
 .admin-section {
   display: flex;
-
   margin-bottom: 20px;
   color: white;
 }
@@ -50,10 +54,11 @@
   transition: background-color 0.3s;
 }
 
+
+
 .nav-link i {
   margin-right: 10px;
 }
-
 
 .nav-link:hover {
   background-color: #adcbef;
@@ -65,8 +70,6 @@
   }
 }
 
-
-
 /* Estilos para la tabla */
 .table-header {
   background-color: #f1f1f1;
@@ -74,20 +77,15 @@
   font-weight: bold;
 }
 
-.custom-container {
-  margin-top: 60px;
-}
-
 .card {
   border-radius: 10px;
   box-shadow: 0 2px 4px #adcbef;
+  margin-top: 70px;
 }
 
 .table {
   font-size: 14px;
 }
-
-
 
 .table tbody tr:nth-of-type(even) {
   background-color: #e0e0e0;
@@ -98,8 +96,9 @@
 }
 
 .table body tr td {
- background-color: #e0e0e0;
+  background-color: #e0e0e0;
 }
+
 .table-responsive {
   overflow-x: auto;
 }
@@ -107,3 +106,5 @@
 .btn-editar {
   padding: 5px 10px;
 }
+
+

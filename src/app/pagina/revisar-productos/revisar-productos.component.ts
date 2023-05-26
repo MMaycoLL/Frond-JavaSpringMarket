@@ -3,6 +3,8 @@ import { Alerta } from 'src/app/modelo/alerta';
 import { ProductoGetDTO } from 'src/app/modelo/producto-get-dto';
 import { ProductoModeradorDTO } from 'src/app/modelo/producto-moderador-dto';
 import { ModeradorService } from 'src/app/servicios/moderador.service';
+import { TokenService } from 'src/app/servicios/token.service';
+import { ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-revisar-productos',
@@ -10,55 +12,67 @@ import { ModeradorService } from 'src/app/servicios/moderador.service';
   styleUrls: ['./revisar-productos.component.css']
 })
 export class RevisarProductosComponent {
-
   productos: ProductoGetDTO[] = [];
   alerta!: Alerta;
   moderador: ProductoModeradorDTO;
+  estado!: string;
+  mostrarMotivo: boolean = false;
+  motivo: string = '';
 
-  constructor(private moderadorService: ModeradorService) {
+  constructor(private moderadorService: ModeradorService, private tokenService: TokenService) {
     this.moderador = new ProductoModeradorDTO();
   }
 
-  public aprobarProducto() {
-    const objeto = this;
+  public aprobarProducto(idProducto: number, motivo: string): void {
+    const aprobarProducto: ProductoModeradorDTO = {
+      fechaAutorizacion: new Date(),
+      motivo: motivo,
+      idModerador: this.tokenService.getId(),
+      idProducto: idProducto
+    };
 
-    console.log("this.aprobarProducto");
-
-    this.moderadorService.aprobarProducto(this.moderador).subscribe({
+    this.moderadorService.aprobarProducto(aprobarProducto).subscribe({
       next: data => {
-        objeto.alerta = new Alerta(data.respuesta, "success");
+        console.log('Producto aprobado:', data);
       },
       error: error => {
-        objeto.alerta = new Alerta(error.error.respuesta, "danger");
+        console.log('Error al aprobar el producto:', error);
       }
     });
-
   }
 
-  public rechazarProducto() {
-    const objeto = this;
 
-    console.log("this.rechazarProducto");
+  public rechazarProducto(idProducto: number, motivo: string) {
+    const rechazarProducto: ProductoModeradorDTO = {
+      fechaAutorizacion: new Date(),
+      motivo: motivo,
+      idModerador: this.tokenService.getId(),
+      idProducto: idProducto
+          };
 
-    this.moderadorService.rechazarProducto(this.moderador).subscribe({
+
+
+    this.moderadorService.rechazarProducto(rechazarProducto).subscribe({
       next: data => {
-        objeto.alerta = new Alerta(data.respuesta, "success");
+        console.log('Producto rechazado:', data);
       },
       error: error => {
-        objeto.alerta = new Alerta(error.error.respuesta, "danger");
+        console.log('Error al rechazar el producto:', error);
       }
+
     });
 
   }
 
   public listarSinRevisar() {
     const objeto = this;
+    this.estado = "SinRevisar";
 
     console.log("listarSinRevisar");
 
     this.moderadorService.listarSinRevisar().subscribe({
       next: data => {
-        this.productos = data.respuesta;
+
         objeto.alerta = new Alerta(data.respuesta, "success");
       },
       error: error => {
@@ -70,6 +84,7 @@ export class RevisarProductosComponent {
 
   public listarAutorizados() {
     const objeto = this;
+    this.estado = "Autorizados";
     console.log("listarAutorizados")
 
     this.moderadorService.listarAutorizados().subscribe({
@@ -85,6 +100,7 @@ export class RevisarProductosComponent {
   }
 
   public listarDenegados() {
+    this.estado = "Denegados";
     const objeto = this;
     console.log("listarDenegados");
 
@@ -99,5 +115,7 @@ export class RevisarProductosComponent {
     });
 
   }
+
+
 
 }

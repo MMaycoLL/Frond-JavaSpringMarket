@@ -56,6 +56,15 @@ export class TokenService {
     return [];
   }
 
+  public getId(): number {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.sub_code;
+    }
+    return 0;
+  }
+
   private decodePayload(token: string): any {
     const payload = token!.split(".")[1];
     const payloadDecoded = Buffer.from(payload, 'base64').toString('ascii');

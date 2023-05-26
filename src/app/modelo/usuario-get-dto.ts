@@ -6,6 +6,7 @@ export class UsuarioGetDTO {
   direccion: string = "";
   telefono: string = "";
   cedula: string = "";
+  
 
 
 }

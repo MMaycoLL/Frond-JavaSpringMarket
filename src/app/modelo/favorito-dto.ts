@@ -1,5 +1,10 @@
 export class FavoritoDTO {
 
-  idUsuario: number = 0;
-  idProducto: number = 0;
+  idUsuario: number;
+  idProducto: number;
+
+  constructor(idUsuario: number, idProducto: number) {
+    this.idUsuario = idUsuario;
+    this.idProducto = idProducto;
+  }
 }
