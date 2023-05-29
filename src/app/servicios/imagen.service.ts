@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ImagenService {
-  private imgURL = "http://localhost:8080/api/imagenes";
+  private imgURL = "http://back-javaspringmarket-production-e786.up.railway.app/api/imagenes";
   constructor(private http: HttpClient) { }
 
   public subir(imagen: FormData): Observable<MensajeDTO> {

@@ -9,7 +9,7 @@ import { ProductoModeradorDTO } from '../modelo/producto-moderador-dto';
 })
 export class ModeradorService {
 
-  private userUrl = "http://localhost:8080/api/productoModerador";
+  private userUrl = "http://back-javaspringmarket-production-e786.up.railway.app/api/productoModerador";
 
   constructor(private http: HttpClient) { }
 
