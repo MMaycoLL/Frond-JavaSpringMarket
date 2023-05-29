@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private catURL = "http://back-javaspringmarket-production-e786.up.railway.app/api/producto";
+  private catURL = "https://back-javaspringmarket-production-e786.up.railway.app/api/producto";
   constructor(private http: HttpClient) { }
 
   public listar(): Observable<MensajeDTO> {

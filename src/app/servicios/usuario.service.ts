@@ -10,7 +10,7 @@ import { MensajeDTO } from '../modelo/mensaje-dto';
 })
 export class UsuarioService {
 
-  private userUrl = "http://back-javaspringmarket-production-e786.up.railway.app/api/usuario";
+  private userUrl = "https://back-javaspringmarket-production-e786.up.railway.app/api/usuario";
   constructor(private http: HttpClient) { }
 
   public obtener(idUsuario: number): Observable<MensajeDTO> {
