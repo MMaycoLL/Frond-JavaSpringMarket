@@ -1,16 +1,18 @@
 .custom-carousel {
-  width: 100%; /* Ajusta el ancho deseado */
-  margin: 0; /* Elimina el margen */
-  padding: 0; /* Elimina el relleno */
-  border: none; /* Elimina el borde */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: rgb(14, 11, 11);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Agrega una sombra blanca */
 }
 
 .custom-carousel .carousel-inner {
-  width: 100%; /* Ajusta el ancho del carrusel interno */
+  width: 100%;
 }
 
 .custom-carousel .carousel-item {
-  width: 100%; /* Ajusta el ancho de los elementos del carrusel */
+  width: 100%;
 }
 
 .custom-carousel .carousel-item.active {
@@ -20,4 +22,21 @@
 .custom-carousel .carousel-item-next,
 .custom-carousel .carousel-item-prev {
   display: flex;
+}
+
+.custom-carousel h2,
+.custom-carousel p,
+.custom-carousel a {
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px black; /* Agrega un sombreado negro */
+}
+
+.custom-carousel .carousel-caption {
+  margin-bottom: 20px; /* Agrega un margen inferior a la leyenda del carrusel */
+}
+
+.product-image {
+  height: 250px; /* Establece la altura deseada */
+  object-fit: center; /* Ajusta la imagen dentro del contenedor */
 }
