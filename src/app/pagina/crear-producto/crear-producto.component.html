@@ -218,14 +218,15 @@
                 </span>
 
 
-              <div class="form-control border-1 input-group-text  bg-custom">
-                <div *ngFor="let categoria of categorias; let i = index">
-                  <label class="form-check-label">
-                    <input type="checkbox" name="categoria_{{i}}" [checked]="producto.categorias.includes(categoria)" (change)="toggleCategoria(categoria)" class="form-check-input">
-                    {{ categoria }}
-                  </label>
+                <div class="form-control border-1 input-group-text bg-custom categorias-container">
+                  <div *ngFor="let categoria of categorias; let i = index">
+                    <label class="form-check-label">
+                      <input type="checkbox" name="categoria_{{i}}" [checked]="producto.categorias.includes(categoria)" (change)="toggleCategoria(categoria)" class="form-check-input">
+                      {{ categoria }}
+                    </label>
+                  </div>
                 </div>
-              </div>
+
             </div>
             </div>
           </div>

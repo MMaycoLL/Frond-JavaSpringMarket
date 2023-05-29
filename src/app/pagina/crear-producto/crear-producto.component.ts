@@ -19,7 +19,7 @@ export class CrearProductoComponent {
 
   constructor(
     private imagenService: ImagenService,
-    private categoriaService: CategoriaService,
+    private servicio: CategoriaService,
     private route: ActivatedRoute,
     private productoService: ProductoService
   ) {
@@ -36,12 +36,17 @@ export class CrearProductoComponent {
   }
 
   ngOnInit(): void {
-    this.categorias.push('Tecnología');
-    this.categorias.push('Hogar');
-    this.categorias.push('Deportes');
-    this.categorias.push('Moda');
-    this.categorias.push('Mascotas');
-   
+    this.cargarCategorias();
+  }
+
+  cargarCategorias(): void {
+    this.servicio.listar().subscribe(
+      (resultado) => {
+        this.categorias = resultado.respuesta;
+        console.log(this.categorias);
+
+      },
+    );
   }
 
   onFileChange(event: any) {

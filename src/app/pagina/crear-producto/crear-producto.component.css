@@ -8,3 +8,25 @@
   background-color: #adcbef;
 }
 
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px; /* Ajusta el espacio entre los elementos según tus necesidades */
+  max-width: 100%;
+  justify-items: start;
+}
+
+.categorias-container label {
+  white-space: nowrap; /* Evita el salto de línea de los elementos */
+}
+
+.categorias-container input[type="checkbox"]:checked + label {
+  background-color: #ca6363; /* Cambia el color de fondo al seleccionar */
+}
+
+
+
+
+
+
+
